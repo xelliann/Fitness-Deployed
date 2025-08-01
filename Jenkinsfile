@@ -24,14 +24,14 @@ pipeline {
 
         stage('Tag Docker Image') {
             steps {
-                sh 'docker tag fitness-website your-dockerhub-username/fitness-website:latest'
+                sh 'docker tag fitness-website xelliann/fitness-website:latest'
             }
         }
 
         stage('Push to Docker Hub') {
             steps {
                 sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-                sh 'docker push your-dockerhub-username/fitness-website:latest'
+                sh 'docker push xelliann/fitness-website:latest'
             }
         }
     }
