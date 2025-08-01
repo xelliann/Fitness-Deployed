@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Clone Repo') {
             steps {
-                git 'https://github.com/YOUR_USERNAME/fitness-website-devops.git'
+                git 'https://github.com/xelliann/Fitness-Deployed.git'
             }
         }
         stage('Build Docker Image') {
