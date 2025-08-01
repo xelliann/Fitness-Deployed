@@ -8,7 +8,7 @@ RUN docker-php-ext-install mysqli
 
 # Copy your app code
 COPY . /var/www/html/
-COPY .env /var/www/html/.env
+COPY includes/.env /var/www/html/.env
 # Set permissions
 RUN chown -R www-data:www-data /var/www/html && chmod -R 755 /var/www/html
 
