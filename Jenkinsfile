@@ -10,7 +10,7 @@ pipeline {
             steps {
                 script {
                     withCredentials([usernamePassword(credentialsId: 'github-token', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_PASS')]) {
-                        git url: "https://${GIT_USER}:${GIT_PASS}@github.com/xelliann/Fitness-Deployed.git"
+                        git branch: 'main', url: "https://${GIT_USER}:${GIT_PASS}@github.com/xelliann/Fitness-Deployed.git"
                     }
                 }
             }
