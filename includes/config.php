@@ -1,10 +1,12 @@
 <?php
 define("ROOT_URL", "http://localhost/health-planner/");
-$host = "127.0.0.1";
-$port = 3307;
-$db = "health_planner";
-$user = "root";
-$pass = "";
+loadEnv(__DIR__ . '/../.env'); // Adjust path to your actual .env location
+
+$host = $_ENV['DB_HOST'];
+$db   = $_ENV['DB_NAME'];
+$user = $_ENV['DB_USER'];
+$pass = $_ENV['DB_PASS'];
+$port = 3306; // Default MySQL port on RDS
 function loadEnv($path) {
     if (!file_exists($path)) {
         throw new Exception(".env file not found at $path");
