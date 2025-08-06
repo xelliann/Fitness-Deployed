@@ -16,7 +16,7 @@ $result = $conn->query($sql);
   <title>Daily Meal Dashboard</title>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="stylesheet" href="<?= ROOT_URL ?>assets/dashboard.css" />
+  <link rel="stylesheet" href="../assets/dashboard.css" />
   <!-- Google Fonts: Montserrat & Rubik -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,800;1,700&display=swap" rel="stylesheet"> 
 <style>
@@ -90,7 +90,7 @@ $result = $conn->query($sql);
   <div class="feedback-section">
     <div class="feedback-header">
       <h2>User Feedback</h2>
-      <a href="<?= ROOT_URL ?>feedback.php"" class="btn">+ Add Review</a>
+      <a href="../feedback.php" class="btn">+ Add Review</a>
     </div>
 
     <div class="feedback-container">
