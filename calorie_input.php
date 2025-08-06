@@ -1,4 +1,4 @@
-<!-- calorie_input.php -->
+
 <?php
 require 'partials/header.php';
 ?>
