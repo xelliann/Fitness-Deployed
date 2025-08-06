@@ -29,7 +29,7 @@ if (!$user) {
     <title>My Profile</title>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-    <link rel="stylesheet" href="<?= ROOT_URL ?>assets/dashboard.css" />
+    <link rel="stylesheet" href="../assets/dashboard.css" />
     <!-- Google Fonts: Montserrat & Rubik -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,800;1,700&display=swap" rel="stylesheet"> 
 </head>
@@ -50,15 +50,15 @@ if (!$user) {
 
     <div class="profile-card">
       <div class="card-title">Your Plans</div>
-      <p><i class="fas fa-utensils"></i> <a href="<?= ROOT_URL ?>view_diet_plan.php" class="badge">View Diet Plan</a></p>
-      <p><i class="fas fa-dumbbell"></i> <a href="<?= ROOT_URL ?>view_exercise_plan.php" class="badge">View Exercise Plan</a></p>
+      <p><i class="fas fa-utensils"></i> <a href="../view_diet_plan.php" class="badge">View Diet Plan</a></p>
+      <p><i class="fas fa-dumbbell"></i> <a href="../view_exercise_plan.php" class="badge">View Exercise Plan</a></p>
     </div>
 
     <div class="profile-card">
       <div class="card-title">Quick Links</div>
       <div class="quick-links">
-        <a href="<?= ROOT_URL ?>feedback.php"><i class="fas fa-comment-dots"></i> Feedback</a><br><br>
-        <a href="<?= ROOT_URL ?>auth/logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        <a href="../feedback.php"><i class="fas fa-comment-dots"></i> Feedback</a><br><br>
+        <a href="../auth/logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a>
       </div>
     </div>
   </div>
