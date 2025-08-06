@@ -1,6 +1,7 @@
 <?php
-define("ROOT_URL", "http://localhost/health-planner/");
-loadEnv(__DIR__ . '/../.env'); // Adjust path to your actual .env location
+
+define("ROOT_URL", "http://localhost/Fitness-Deployed/");
+loadEnv(__DIR__ . '/includes/.env'); // Adjust path to your actual .env location
 
 $host = $_ENV['DB_HOST'];
 $db   = $_ENV['DB_NAME'];
