@@ -5,10 +5,9 @@ pipeline {
         DOCKERHUB_CREDENTIALS = credentials('dockerhub-login')
     }
 
-    triggers {
-        scm('* * * * *') // Poll SCM every minute
+       triggers {
+        pollSCM('* * * * *') // Poll SCM every minute
     }
-
     stages {
         stage('Clone Repository') {
             steps {
