@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'includes/db.php'; 
+include '/../includes/db.php'; 
 
 $user_id = $_SESSION['user_id'] ?? null;
 $username = $_SESSION['username'] ?? '';
