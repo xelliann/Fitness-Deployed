@@ -2,11 +2,15 @@ pipeline {
     agent any
 
     environment {
-        DOCKERHUB_CREDENTIALS = credentials('dockerhub-login') // Jenkins credential ID for Docker Hub
+        DOCKERHUB_CREDENTIALS = credentials('dockerhub-login')
+    }
+
+    triggers {
+        scm('* * * * *') // Poll SCM every minute
     }
 
     stages {
-        stage('Clone Repo') {
+        stage('Clone Repository') {
             steps {
                 script {
                     withCredentials([usernamePassword(credentialsId: 'github-token', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_PASS')]) {
@@ -32,6 +36,15 @@ pipeline {
             steps {
                 sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
                 sh 'docker push xelliann/fitness-website:latest'
+            }
+        }
+
+        stage('Deploy Container') {
+            steps {
+                sh '''
+                    docker rm -f fitness-container || true
+                    docker run -d -p 81:80 --name fitness-container xelliann/fitness-website:latest
+                '''
             }
         }
     }
