@@ -5,17 +5,14 @@ pipeline {
         DOCKERHUB_CREDENTIALS = credentials('dockerhub-login')
     }
 
-       triggers {
+    triggers {
         pollSCM('* * * * *') // Poll SCM every minute
     }
+
     stages {
         stage('Clone Repository') {
             steps {
-                script {
-                    withCredentials([usernamePassword(credentialsId: 'github-token', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_PASS')]) {
-                        git branch: 'main', url: "https://${GIT_USER}:${GIT_PASS}@github.com/xelliann/Fitness-Deployed.git"
-                    }
-                }
+                git branch: 'main', url: 'https://github.com/xelliann/Fitness-Deployed.git'
             }
         }
 
