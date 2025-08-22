@@ -8,7 +8,7 @@ require_once __DIR__ . '/header.php';
     <p>Welcome to <strong>FitSmart Planner</strong> — your personal companion on the journey to a healthier, stronger, and smarter lifestyle.</p>
 
   <h2>Who We Are</h2>
-  <p>FitSmart Planner is a student-developed health-tech platform designed as part of a capstone project for <strong>MCA at Lovely Professional University</strong>. The goal is to empower users by providing <strong>AI-generated, personalized diet and workout plans</strong> based on individual needs and goals.</p>
+  <p>FitSmart Planner is a student-developed health-tech platform designed for health awareness. The goal is to empower users by providing <strong>AI-generated, personalized diet and workout plans</strong> based on individual needs and goals.</p>
 
   <h2>What We Offer</h2>
   <ul>
@@ -22,11 +22,8 @@ require_once __DIR__ . '/header.php';
   <p>Health is personal — and we believe your fitness plans should be too. With the power of <strong>OpenAI</strong> and modern web development, this platform creates meaningful, efficient guidance for anyone looking to improve their health.</p>
 
   <h2>Meet the Creator</h2>
-  <p>This is an group project made by
-    <strong>Akshay Kumar,</strong>
-    <strong>Himanshu Kumar,</strong>
-    <strong>Sameer Sha,</strong>
-    <strong>Sandeep.</strong>
+  <p>This project is made by
+    <strong>Mohit Sharma,</strong>
 
   This project reflects the perfect blend of personal passion and technical learning.</p>
 
