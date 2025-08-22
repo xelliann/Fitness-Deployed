@@ -3,7 +3,6 @@ pipeline {
 
     environment {
         DOCKER_CREDS = credentials('dockerhub-login')
-        ENV_CONTENT = credentials('fitness-env-file') // Entire .env file as secret text
     }
 
     stages {
@@ -15,9 +14,9 @@ pipeline {
 
         stage('Create .env File') {
             steps {
-                sh '''
-                    echo "$ENV_CONTENT" > includes/.env
-                '''
+                withCredentials([file(credentialsId: 'fitness-env-file', variable: 'ENV_FILE')]) {
+                    sh 'cp $ENV_FILE includes/.env'
+                }
             }
         }
 
