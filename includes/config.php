@@ -2,7 +2,10 @@
 
 define("ROOT_URL", "http://localhost/Fitness-Deployed/");
 loadEnv(__DIR__ . '/.env'); // Adjust path to your actual .env location
-
+$db_host = $_ENV['DB_HOST'];
+$db_name = $_ENV['DB_NAME'];
+$db_user = $_ENV['DB_USER'];
+$db_pass = $_ENV['DB_PASS'];
 function loadEnv($path) {
     if (!file_exists($path)) {
         throw new Exception(".env file not found at $path");
