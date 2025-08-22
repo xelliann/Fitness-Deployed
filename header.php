@@ -7,10 +7,9 @@ $username = $_SESSION['username'] ?? '';
 
 if (!$user_id) {
   header('Location: auth/login.php');
+  exit();
 }
-
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
