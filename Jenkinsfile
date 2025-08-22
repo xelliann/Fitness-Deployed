@@ -16,7 +16,7 @@ pipeline {
         stage('Create .env File') {
             steps {
                 sh '''
-                    mkdir -p includes
+                    cd includes
                     echo "$ENV_CONTENT" > includes/.env
                 '''
             }
