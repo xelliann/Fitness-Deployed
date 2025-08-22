@@ -32,13 +32,11 @@ pipeline {
             }
         }
 
-        stage('Deploy Container') {
+        stage('Deploy to Kubernetes') {
             steps {
                 sh '''
-                    docker rm -f fitness-container || true
-                    docker run -d -p 81:80 --name fitness-container \
-                        -v $PWD/includes/.env:/var/www/html/includes/.env \
-                        xelliann/fitness-website:latest
+                    kubectl apply -f K8S/deployment.yml
+                    kubectl apply -f K8S/service.yml
                 '''
             }
         }
