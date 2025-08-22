@@ -2,11 +2,8 @@ pipeline {
     agent any
 
     environment {
-        DOCKERHUB_CREDENTIALS = credentials('dockerhub-login')
-    }
-
-    triggers {
-        pollSCM('* * * * *') // Poll SCM every minute
+        DOCKER_CREDS = credentials('dockerhub-login')
+        ENV_CONTENT = credentials('fitness-env-file') // Entire .env file as secret text
     }
 
     stages {
@@ -16,9 +13,18 @@ pipeline {
             }
         }
 
+        stage('Create .env File') {
+            steps {
+                sh '''
+                    mkdir -p includes
+                    echo "$ENV_CONTENT" > includes/.env
+                '''
+            }
+        }
+
         stage('Docker Login') {
             steps {
-                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+                sh 'echo $DOCKER_CREDS_PSW | docker login -u $DOCKER_CREDS_USR --password-stdin'
             }
         }
 
@@ -32,10 +38,11 @@ pipeline {
             steps {
                 sh '''
                     docker rm -f fitness-container || true
-                    docker run -d -p 81:80 --name fitness-container xelliann/fitness-website:latest
+                    docker run -d -p 81:80 --name fitness-container \
+                        -v $PWD/includes/.env:/var/www/html/includes/.env \
+                        xelliann/fitness-website:latest
                 '''
             }
         }
     }
 }
-
