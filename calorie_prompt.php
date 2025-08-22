@@ -60,11 +60,11 @@ $calorieData = json_decode($cleanedJson, true);
                 foreach ($calorieData as $item) {
                     $itemName = htmlspecialchars($item['item']);
                     $itemCalories = (int) $item['calories'];
-                    echo "<li><strong>$itemName</strong> - $itemCalories kcal</li>";
+                    echo "<li><strong>$itemName</strong> - $itemCalories cal</li>";
                     $totalCalories += $itemCalories;
                 }
                 echo "</ul>";
-                echo "<div class='total'>Total Calories Intake: {$totalCalories} kcal</div>";
+                echo "<div class='total'>Total Calories Intake: {$totalCalories} cal</div>";
             } else {
                 echo "<p style='color:red;'>Oops! Couldn't get the result in proper format.</p>";
                 echo "<pre>" . htmlspecialchars($rawContent) . "</pre>";

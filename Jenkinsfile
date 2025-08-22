@@ -2,11 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKERHUB_CREDENTIALS = credentials('dockerhub-login')
-    }
-
-    triggers {
-        pollSCM('* * * * *') // Poll SCM every minute
+        DOCKER_CREDS = credentials('dockerhub-login')
     }
 
     stages {
@@ -16,22 +12,23 @@ pipeline {
             }
         }
 
-        stage('Build Docker Image') {
+        stage('Create .env File') {
             steps {
-                sh 'docker build -t fitness-website .'
+                withCredentials([file(credentialsId: 'fitness-env-file', variable: 'ENV_FILE')]) {
+                    sh 'cp $ENV_FILE includes/.env'
+                }
             }
         }
 
-        stage('Tag Docker Image') {
+        stage('Docker Login') {
             steps {
-                sh 'docker tag fitness-website xelliann/fitness-website:latest'
+                sh 'echo $DOCKER_CREDS_PSW | docker login -u $DOCKER_CREDS_USR --password-stdin'
             }
         }
 
-        stage('Push to Docker Hub') {
+        stage('Pull Docker Image') {
             steps {
-                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-                sh 'docker push xelliann/fitness-website:latest'
+                sh 'docker pull xelliann/fitness-website:latest'
             }
         }
 
@@ -39,7 +36,9 @@ pipeline {
             steps {
                 sh '''
                     docker rm -f fitness-container || true
-                    docker run -d -p 81:80 --name fitness-container xelliann/fitness-website:latest
+                    docker run -d -p 81:80 --name fitness-container \
+                        -v $PWD/includes/.env:/var/www/html/includes/.env \
+                        xelliann/fitness-website:latest
                 '''
             }
         }
