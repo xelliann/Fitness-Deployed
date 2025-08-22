@@ -35,8 +35,8 @@ pipeline {
         stage('Deploy to Kubernetes') {
             steps {
                 sh '''
-                    kubectl apply -f K8S/deployment.yaml
-                    kubectl apply -f K8S/service.yaml
+                    kubectl apply -f K8S/deployment.yaml --validate=false
+                    kubectl apply -f K8S/service.yaml --validate=false
                 '''
             }
         }
