@@ -16,22 +16,15 @@ pipeline {
             }
         }
 
-        stage('Build Docker Image') {
-            steps {
-                sh 'docker build -t fitness-website .'
-            }
-        }
-
-        stage('Tag Docker Image') {
-            steps {
-                sh 'docker tag fitness-website xelliann/fitness-website:latest'
-            }
-        }
-
-        stage('Push to Docker Hub') {
+        stage('Docker Login') {
             steps {
                 sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-                sh 'docker push xelliann/fitness-website:latest'
+            }
+        }
+
+        stage('Pull Docker Image') {
+            steps {
+                sh 'docker pull xelliann/fitness-website:latest'
             }
         }
 
@@ -45,3 +38,4 @@ pipeline {
         }
     }
 }
+
