@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 require 'includes/db.php';
 $openai_api_key = $_ENV['OPENAI_API_KEY'];
 

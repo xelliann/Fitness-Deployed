@@ -2,8 +2,8 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3307
--- Generation Time: Jul 31, 2025 at 11:16 AM
+-- Host: 127.0.0.1
+-- Generation Time: Aug 22, 2025 at 09:01 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -43,8 +43,10 @@ CREATE TABLE `daily_stats` (
 --
 
 INSERT INTO `daily_stats` (`id`, `user_id`, `date`, `calories`, `carbs`, `heart_rate`, `water`, `exercise_minutes`) VALUES
-(3, 3, '2025-05-23', 2200, 250, 72, 9, 40),
-(22, 3, '2025-05-22', 2200, 250, 72, 9, 40);
+(3, 4, '2025-08-21', 2200, 250, 72, 9, 40),
+(4, 4, '2025-08-22', 2200, 250, 72, 9, 40),
+(23, 4, '2025-08-20', 2150, 245, 75, 8, 35),
+(24, 4, '2025-08-19', 2300, 260, 70, 10, 45);
 
 -- --------------------------------------------------------
 
@@ -205,7 +207,12 @@ INSERT INTO `meals` (`id`, `user_id`, `date`, `time`, `name`, `category`, `amoun
 (6, 3, '2025-05-23', '10:30:00', 'Greek Yogurt', 'Snack', 1),
 (7, 3, '2025-05-23', '13:00:00', 'Grilled Fish & Quinoa', 'Lunch', 1),
 (8, 3, '2025-05-23', '16:30:00', 'Apple', 'Snack', 2),
-(9, 3, '2025-05-23', '19:30:00', 'Vegetable Stir-fry with Tofu', 'Dinner', 1);
+(9, 3, '2025-05-23', '19:30:00', 'Vegetable Stir-fry with Tofu', 'Dinner', 1),
+(10, 4, '2025-08-22', '08:00:00', 'Protein Oatmeal', 'Breakfast', 1),
+(11, 4, '2025-08-22', '11:00:00', 'Greek Yogurt with Nuts', 'Snack', 1),
+(12, 4, '2025-08-22', '13:00:00', 'Grilled Chicken Salad', 'Lunch', 1),
+(13, 4, '2025-08-22', '16:00:00', 'Protein Shake', 'Snack', 1),
+(14, 4, '2025-08-22', '19:00:00', 'Salmon with Vegetables', 'Dinner', 1);
 
 -- --------------------------------------------------------
 
@@ -263,7 +270,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `age`, `weight`, `height`, `goal`, `activity_level`, `created_at`, `role`) VALUES
-(3, 'harsh', 'parmarharsh2597@gmail.com', '$2y$10$75MU5Y3BGcmC2z5pO2wW2.GWWA3N7VgFr5nFwegLus.1.r5OgeeQy', NULL, NULL, NULL, NULL, NULL, '2025-05-19 13:02:26', 'user');
+(4, 'Mohit', 'mohisharma7890@gmail.com', '$2y$10$R6gdNTGocevYyyfTem0h9eF.iRRiyU0qZznZN4y7zMJGTeTR1Opiy', NULL, NULL, NULL, NULL, NULL, '2025-08-21 06:58:20', 'admin');
 
 -- --------------------------------------------------------
 
@@ -294,12 +301,13 @@ INSERT INTO `user_fitness_data` (`id`, `user_id`, `date`, `steps`, `calories_bur
 (2, 1, '2025-04-14', 4000, 250, 25, 6.8, 'Walking', 20, 110, '2025-04-16 10:27:54'),
 (3, 1, '2025-04-13', 10000, 300, 80, 8, 'Cycling', 40, 140, '2025-04-16 10:27:54'),
 (4, 1, '2025-04-12', 6500, 600, 50, 7.2, 'Yoga', 45, 95, '2025-04-16 10:27:54'),
-(5, 1, '2025-04-11', 12000, 400, 90, 6.5, 'HIIT', 35, 150, '2025-04-16 10:27:54'),
-(6, 3, '2025-04-15', 8500, 450, 60, 7.5, 'Running', 30, 130, '2025-04-16 10:27:54'),
-(7, 3, '2025-04-14', 4000, 250, 25, 6.8, 'Walking', 20, 110, '2025-04-16 10:27:54'),
-(8, 3, '2025-04-13', 10000, 300, 80, 8, 'Cycling', 40, 140, '2025-04-16 10:27:54'),
+(5, 4, '2025-04-11', 12000, 400, 90, 6.5, 'HIIT', 35, 150, '2025-04-16 10:27:54'),
+(6, 4, '2025-04-15', 8500, 450, 60, 7.5, 'Running', 30, 130, '2025-04-16 10:27:54'),
+(7, 4, '2025-04-14', 4000, 250, 25, 6.8, 'Walking', 20, 110, '2025-04-16 10:27:54'),
+(8, 4, '2025-04-13', 10000, 300, 80, 8, 'Cycling', 40, 140, '2025-04-16 10:27:54'),
 (9, 3, '2025-04-12', 6500, 600, 50, 7.2, 'Yoga', 45, 95, '2025-04-16 10:27:54'),
-(10, 3, '2025-04-11', 12000, 400, 90, 6.5, 'HIIT', 35, 150, '2025-04-16 10:27:54');
+(10, 3, '2025-04-11', 12000, 400, 90, 6.5, 'HIIT', 35, 150, '2025-04-16 10:27:54'),
+(11, 4, '2025-08-22', 8500, 450, 65, 8, 'Mixed Workout', 45, 130, '2025-08-22 06:39:01');
 
 --
 -- Indexes for dumped tables
@@ -374,7 +382,7 @@ ALTER TABLE `user_fitness_data`
 -- AUTO_INCREMENT for table `daily_stats`
 --
 ALTER TABLE `daily_stats`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `diet_plan`
@@ -404,7 +412,7 @@ ALTER TABLE `feedback`
 -- AUTO_INCREMENT for table `meals`
 --
 ALTER TABLE `meals`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `recommended_food`
@@ -416,13 +424,13 @@ ALTER TABLE `recommended_food`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `user_fitness_data`
 --
 ALTER TABLE `user_fitness_data`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
