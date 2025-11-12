@@ -3,9 +3,10 @@ kind: Service
 metadata:
   name: fitness-service
 spec:
-  type: LoadBalancer
+  type: NodePort
   selector:
     app: fitness
   ports:
-  - port: 80
-    targetPort: 80
+    - port: 80           # Service port (inside cluster)
+      targetPort: 80     # Container port (inside pod)
+      nodePort: 30081    # External port (Node/Minikube)
