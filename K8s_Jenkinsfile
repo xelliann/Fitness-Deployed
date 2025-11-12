@@ -1,0 +1,40 @@
+pipeline {
+    agent any
+
+    environment {
+        DOCKER_CREDS = credentials('dockerhub-login')
+    }
+
+    stages {
+        stage('Clone Repository') {
+            steps {
+                git branch: 'main', url: 'https://github.com/xelliann/Fitness-Deployed.git'
+            }
+        }
+
+        stage('Docker Login') {
+            steps {
+                sh 'echo $DOCKER_CREDS_PSW | docker login -u $DOCKER_CREDS_USR --password-stdin'
+            }
+        }
+
+        stage('Build & Push Docker Image') {
+            steps {
+                sh '''
+                    docker build -t xelliann/fitness-website:latest .
+                    docker push xelliann/fitness-website:latest
+                '''
+            }
+        }
+
+        stage('Deploy to Kubernetes') {
+            steps {
+                sh '''
+                    kubectl apply -f k8s/secret.yaml
+                    kubectl apply -f k8s/deployment.yaml
+                    kubectl apply -f k8s/service.yaml
+                '''
+            }
+        }
+    }
+}
